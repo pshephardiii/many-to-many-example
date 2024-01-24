@@ -12,7 +12,7 @@ exports.createMovie = async (req, res) => {
 
 exports.indexMovies = async (req, res) => {
   try {
-    const foundMovies = await Movie.find({})
+    const foundMovies = await Movie.find({}).populate('cast')
     res.status(200).json(foundMovies)
   } catch (error) {
     res.status(400).json({ message: error.message })
